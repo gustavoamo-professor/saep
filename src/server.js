@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 app.use(estoqueRoutes);
 
-const porta = process.env.PORT || 3000;
+const porta = process.env.PORT || 8088;
 
 app.listen(porta, () => {
   console.log('Servidor rodando na porta ' + porta);

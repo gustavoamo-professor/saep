@@ -11,3 +11,4 @@ const conexao = mysql.createPool({
 });
 
 module.exports = conexao.promise();
+
