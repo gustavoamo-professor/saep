@@ -1,0 +1,84 @@
+PLANO DE TESTES - SAÍDA DE PRODUTOS
+
+Objetivo
+----------
+Validar que o sistema registra a saída de produtos apenas quando houver quantidade suficiente em estoque, evitando divergências no controle de materiais.
+
+Escopo
+------
+Cobrir os cenários principais relacionados à regra de saída de produtos:
+- saída com estoque suficiente
+- saída com estoque insuficiente
+- tentativa de saída com quantidade inválida
+
+Cenário 1: Saída válida com estoque suficiente
+---------------------------------------------
+Pré-condições:
+- O sistema está ativo.
+- O produto "Mouse" está cadastrado no sistema.
+- O estoque atual do produto "Mouse" é 12 unidades.
+
+Dados de entrada:
+- Nome do produto: Mouse
+- Quantidade solicitada para saída: 3
+
+Passos de execução:
+1. Acessar a funcionalidade de registro de saída de produtos.
+2. Informar o nome do produto "Mouse".
+3. Informar a quantidade "3".
+4. Confirmar a operação.
+
+Resultado esperado:
+- A saída deve ser registrada com sucesso.
+- O estoque do produto "Mouse" deve passar de 12 para 9 unidades.
+- O sistema deve registrar a movimentação no histórico de saídas.
+
+Cenário 2: Saída bloqueada por estoque insuficiente
+----------------------------------------------------
+Pré-condições:
+- O sistema está ativo.
+- O produto "Teclado" está cadastrado no sistema.
+- O estoque atual do produto "Teclado" é 10 unidades.
+
+Dados de entrada:
+- Nome do produto: Teclado
+- Quantidade solicitada para saída: 15
+
+Passos de execução:
+1. Acessar a funcionalidade de registro de saída de produtos.
+2. Informar o nome do produto "Teclado".
+3. Informar a quantidade "15".
+4. Confirmar a operação.
+
+Resultado esperado:
+- A saída deve ser negada.
+- O sistema não deve alterar o estoque.
+- O estoque deve permanecer em 10 unidades.
+- O sistema deve exibir uma mensagem de erro informando que não há quantidade suficiente em estoque.
+
+Cenário 3: Quantidade inválida para saída
+------------------------------------------
+Pré-condições:
+- O sistema está ativo.
+- O produto "Monitor" está cadastrado no sistema.
+- O estoque atual do produto "Monitor" é 6 unidades.
+
+Dados de entrada:
+- Nome do produto: Monitor
+- Quantidade solicitada para saída: 0
+
+Passos de execução:
+1. Acessar a funcionalidade de registro de saída de produtos.
+2. Informar o nome do produto "Monitor".
+3. Informar a quantidade "0".
+4. Confirmar a operação.
+
+Resultado esperado:
+- A operação deve ser rejeitada.
+- O sistema não deve registrar nenhuma saída.
+- O estoque deve continuar em 6 unidades.
+- O sistema deve apresentar uma mensagem informando que a quantidade deve ser maior que zero.
+
+Conclusão
+----------
+Os testes acima validam a regra de negócio principal do controle de materiais: a saída só deve ser registrada quando houver saldo suficiente em estoque, evitando divergências e inconsistências no sistema.
